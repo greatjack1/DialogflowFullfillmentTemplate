@@ -11,7 +11,7 @@ namespace DialogflowFullfillmentTemplate.Models
 
     using Newtonsoft.Json;
 
-    public partial class Welcome
+    public partial class DfPostJson
     {
         [JsonProperty("lang")]
         public string Lang { get; set; }
@@ -191,14 +191,14 @@ namespace DialogflowFullfillmentTemplate.Models
         public string ConversationToken { get; set; }
     }
 
-    public partial class Welcome
+    public partial class DfPostJson
     {
-        public static Welcome FromJson(string json) => JsonConvert.DeserializeObject<Welcome>(json, Converter.Settings);
+        public static DfPostJson FromJson(string json) => JsonConvert.DeserializeObject<DfPostJson>(json, Converter.Settings);
     }
 
     public static class Serialize
     {
-        public static string ToJson(this Welcome self) => JsonConvert.SerializeObject(self, Converter.Settings);
+        public static string ToJson(this DfPostJson self) => JsonConvert.SerializeObject(self, Converter.Settings);
     }
 
     public class Converter
