@@ -27,6 +27,7 @@ namespace DialogflowFullfillmentTemplate.Controllers
         [HttpPost]
         public void Post([FromBody]string value)
         {
+
         }
 
         // PUT api/values/5
