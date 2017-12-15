@@ -5,7 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DialogflowFullfillmentTemplate.Models;
 using DialogflowFullfillmentTemplate.ResponseModel;
-
+using System.Net;
+using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Text;
+using Zmanim.TimeZone;
+using Zmanim.Utilities;
+using Zmanim;
+using DialogflowFullfillmentTemplate.ExtensionMethods;
 namespace DialogflowFullfillmentTemplate.Controllers
 {
     [Route("api/[controller]")]
@@ -15,12 +23,41 @@ namespace DialogflowFullfillmentTemplate.Controllers
 
         // POST api/values
         [HttpPost]
-        public JsonResult Post([FromBody]string value)
+        public async Task<JsonResult> Post([FromBody]string value)
         {
+            var remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress;
+          remoteIpAddress.ToString();
+            //Create request
+            WebRequest request = WebRequest.Create("http://freegeoip.net/json/" + remoteIpAddress.ToString());
+            request.Method = "GET";
+            //Get the response
+            WebResponse wr = await request.GetResponseAsync();
+            Stream receiveStream = wr.GetResponseStream();
+            StreamReader reader = new StreamReader(receiveStream, Encoding.UTF8);
+            string content = reader.ReadToEnd();
+            JObject obj = new JObject(content);
+            double lat = (Double)obj["latitude"];
+            double lon = (Double)obj["longitude"];
+            String timeZone = (String)obj["time_zone"];
+            //generate the zmanim
+            ITimeZone zmanimTimeZone = new WindowsTimeZone(timeZone);
+            GeoLocation location = new GeoLocation("Random", lat, lon,
+            0, zmanimTimeZone);
+            ComplexZmanimCalendar czc = new ComplexZmanimCalendar(location);
+            String Speech = "Alos is at " + czc.GetAlosHashachar().formatDate()+".Sunrise is at " + czc.GetSunrise().formatDate()
+              + ". Sof Zeman Krias Shema is at " + czc.GetSofZmanShmaMGA().formatDate() + " According to the Magen Avraham, and at "
+                + czc.GetSofZmanShmaGRA().formatDate() + " according to the Gra." + " Sof zeman Teffilah is at "
+                                                 + czc.GetSofZmanTfilaGRA().formatDate() + " According to the gra and at "
+                                                 + czc.GetSofZmanShmaMGA().formatDate() + " according to the Magen Avraham. "
+                                                 + "Chatzos is at " + czc.GetChatzos().formatDate() + ". Mincha Gedolah is at " + czc.GetMinchaGedola().formatDate()
+                                                 + ". Mincha Ketana is at " + czc.GetMinchaKetana().formatDate() + ". Shkia is at " + czc.GetSunset().formatDate()
+                                                 + ". Tzais Hakochavim is at " + czc.GetTzais().formatDate();
+
+
             JsonResponse response = new JsonResponse();
-            response.DisplayText = "Sunset tonight is at 2:48pm";
+            response.DisplayText = Speech;
             response.Source = "Zmanim.net";
-            response.Speech = "Sunset tonight is at 3:56 pm";
+            response.Speech = Speech;
             Console.WriteLine("Got a request from postman");
             return Json(response);
         }
