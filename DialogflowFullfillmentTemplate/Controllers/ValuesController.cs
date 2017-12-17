@@ -19,23 +19,27 @@ namespace DialogflowFullfillmentTemplate.Controllers
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
-     
-
+     [HttpGet]
+        public String Get(){
+            return Request.HttpContext.Connection.RemoteIpAddress.ToString();
+        }
         // POST api/values
         [HttpPost]
         public async Task<JsonResult> Post([FromBody]string value)
         {
-            var remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress;
-          remoteIpAddress.ToString();
+            String remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress.ToString();
+         
+
             //Create request
-            WebRequest request = WebRequest.Create("http://freegeoip.net/json/" + remoteIpAddress.ToString());
+            WebRequest request = WebRequest.Create("http://freegeoip.net/json/" + remoteIpAddress);
             request.Method = "GET";
             //Get the response
             WebResponse wr = await request.GetResponseAsync();
             Stream receiveStream = wr.GetResponseStream();
-            StreamReader reader = new StreamReader(receiveStream, Encoding.UTF8);
+            StreamReader reader = new StreamReader(receiveStream);
             string content = reader.ReadToEnd();
-            JObject obj = new JObject(content);
+            JObject obj = JObject.Parse(content);
+
             double lat = (Double)obj["latitude"];
             double lon = (Double)obj["longitude"];
             String timeZone = (String)obj["time_zone"];
