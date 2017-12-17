@@ -75,10 +75,11 @@ namespace DialogflowFullfillmentTemplate.Controllers
             } catch(Exception ex){
                 //write the error message to console
                 Console.WriteLine(ex.ToString());
-                JsonResponse response = new JsonResponse();
-                response.DisplayText = "There was a error getting jewish times for your location, please try again later";
-                response.Source = "Zmanimaog.herokuapp.com";
-                response.Speech = "There was a error getting jewish times for your location, please try again later";
+                JsonResponse Errresponse = new JsonResponse();
+                Errresponse.DisplayText = "There was a error getting jewish times for your location, please try again later";
+                Errresponse.Source = "Zmanimaog.herokuapp.com";
+                Errresponse.Speech = "There was a error getting jewish times for your location, please try again later";
+                return Json(Errresponse);
             }
         }
        
