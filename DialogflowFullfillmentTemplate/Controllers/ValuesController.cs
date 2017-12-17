@@ -54,6 +54,15 @@ namespace DialogflowFullfillmentTemplate.Controllers
                                                  + ". Mincha Ketana is at " + czc.GetMinchaKetana().formatDate() + ". Shkia is at " + czc.GetSunset().formatDate()
                                                  + ". Tzais Hakochavim is at " + czc.GetTzais().formatDate();
 
+            String display = 
+         "Alos-" + czc.GetAlosHashachar().formatDate() + "\nSunrise-" + czc.GetSunrise().formatDate()
+              + "\nSof Zeman Krias Shema MGA-" + czc.GetSofZmanShmaMGA().formatDate() + "\n Sof Zman Krias Shema Gra-"
+                + czc.GetSofZmanShmaGRA().formatDate() + "\nSof zeman Teffilah Gra-"
+                                                 + czc.GetSofZmanTfilaGRA().formatDate() + "\n Sof Zman Tefilah Mga-"
+                                                 + czc.GetSofZmanShmaMGA().formatDate()
+                                                 + "\nChatzos-" + czc.GetChatzos().formatDate() + "\nMincha Gedolah-" + czc.GetMinchaGedola().formatDate()
+                                                 + "\nMincha Ketana-" + czc.GetMinchaKetana().formatDate() + "\nShkia-" + czc.GetSunset().formatDate()
+                                                 + "\nTzais Hakochavim-" + czc.GetTzais().formatDate();
 
             JsonResponse response = new JsonResponse();
             response.DisplayText = Speech;
