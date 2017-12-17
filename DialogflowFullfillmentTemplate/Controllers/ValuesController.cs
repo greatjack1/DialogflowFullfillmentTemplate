@@ -45,7 +45,7 @@ namespace DialogflowFullfillmentTemplate.Controllers
             GeoLocation location = new GeoLocation("Random", lat, lon,
             0, zmanimTimeZone);
             ComplexZmanimCalendar czc = new ComplexZmanimCalendar(location);
-            String Speech = "Alos is at " + czc.GetAlosHashachar().formatDate()+".Sunrise is at " + czc.GetSunrise().formatDate()
+            String Speech = "Alos is at " + czc.GetAlosHashachar().formatDate()+". Sunrise is at " + czc.GetSunrise().formatDate()
               + ". Sof Zeman Krias Shema is at " + czc.GetSofZmanShmaMGA().formatDate() + " According to the Magen Avraham, and at "
                 + czc.GetSofZmanShmaGRA().formatDate() + " according to the Gra." + " Sof zeman Teffilah is at "
                                                  + czc.GetSofZmanTfilaGRA().formatDate() + " According to the gra and at "
