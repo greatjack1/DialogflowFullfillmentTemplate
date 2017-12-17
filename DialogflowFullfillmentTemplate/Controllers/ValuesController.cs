@@ -27,11 +27,8 @@ namespace DialogflowFullfillmentTemplate.Controllers
         [HttpPost]
         public async Task<JsonResult> Post([FromBody]string value)
         {
-            String remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress.ToString();
-         
-
-            //Create request
-            WebRequest request = WebRequest.Create("http://freegeoip.net/json/" + remoteIpAddress);
+         //Create request
+            WebRequest request = WebRequest.Create("http://freegeoip.net/json/" + Request.Headers["x-forwarded-for"].ToString());
             request.Method = "GET";
             //Get the response
             WebResponse wr = await request.GetResponseAsync();
