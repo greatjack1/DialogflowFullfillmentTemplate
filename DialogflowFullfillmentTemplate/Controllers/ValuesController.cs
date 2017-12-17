@@ -65,7 +65,7 @@ namespace DialogflowFullfillmentTemplate.Controllers
                                                  + "\nTzais Hakochavim-" + czc.GetTzais().formatDate();
 
             JsonResponse response = new JsonResponse();
-            response.DisplayText = Speech;
+            response.DisplayText = display;
             response.Source = "Zmanim.net";
             response.Speech = Speech;
             Console.WriteLine("Got a request from postman");
