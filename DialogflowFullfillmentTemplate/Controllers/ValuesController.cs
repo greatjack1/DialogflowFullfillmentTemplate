@@ -21,7 +21,7 @@ namespace DialogflowFullfillmentTemplate.Controllers
     {
      [HttpGet]
         public String Get(){
-            return Request.HttpContext.Connection.RemoteIpAddress.ToString();
+           return Request.Headers["x-forwarded-for"].ToString();
         }
         // POST api/values
         [HttpPost]
