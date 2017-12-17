@@ -36,7 +36,7 @@ namespace DialogflowFullfillmentTemplate.Controllers
             StreamReader reader = new StreamReader(receiveStream);
             string content = reader.ReadToEnd();
             JObject obj = JObject.Parse(content);
-
+            String city = (String)obj["City"];
             double lat = (Double)obj["latitude"];
             double lon = (Double)obj["longitude"];
             String timeZone = (String)obj["time_zone"];
@@ -45,7 +45,7 @@ namespace DialogflowFullfillmentTemplate.Controllers
             GeoLocation location = new GeoLocation("Random", lat, lon,
             0, zmanimTimeZone);
             ComplexZmanimCalendar czc = new ComplexZmanimCalendar(location);
-            String Speech = "Alos is at " + czc.GetAlosHashachar().formatDate()+". Sunrise is at " + czc.GetSunrise().formatDate()
+            String Speech = "Here are your zmanim for "+ city+". Alos is at " + czc.GetAlosHashachar().formatDate()+". Sunrise is at " + czc.GetSunrise().formatDate()
               + ". Sof Zeman Krias Shema is at " + czc.GetSofZmanShmaMGA().formatDate() + " According to the Magen Avraham, and at "
                 + czc.GetSofZmanShmaGRA().formatDate() + " according to the Gra." + " Sof zeman Teffilah is at "
                                                  + czc.GetSofZmanTfilaGRA().formatDate() + " According to the gra and at "
@@ -55,7 +55,7 @@ namespace DialogflowFullfillmentTemplate.Controllers
                                                  + ". Tzais Hakochavim is at " + czc.GetTzais().formatDate();
 
             String display = 
-         "Alos-" + czc.GetAlosHashachar().formatDate() + "\nSunrise-" + czc.GetSunrise().formatDate()
+         "Zmanim for "+city+"\nAlos-" + czc.GetAlosHashachar().formatDate() + "\nSunrise-" + czc.GetSunrise().formatDate()
               + "\nSof Zeman Krias Shema MGA-" + czc.GetSofZmanShmaMGA().formatDate() + "\n Sof Zman Krias Shema Gra-"
                 + czc.GetSofZmanShmaGRA().formatDate() + "\nSof zeman Teffilah Gra-"
                                                  + czc.GetSofZmanTfilaGRA().formatDate() + "\n Sof Zman Tefilah Mga-"
