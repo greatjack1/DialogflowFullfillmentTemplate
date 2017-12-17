@@ -36,7 +36,7 @@ namespace DialogflowFullfillmentTemplate.Controllers
             StreamReader reader = new StreamReader(receiveStream);
             string content = reader.ReadToEnd();
             JObject obj = JObject.Parse(content);
-            String city = (String)obj["City"];
+            String city = (String)obj["city"];
             double lat = (Double)obj["latitude"];
             double lon = (Double)obj["longitude"];
             String timeZone = (String)obj["time_zone"];
