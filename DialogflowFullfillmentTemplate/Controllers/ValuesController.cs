@@ -47,14 +47,14 @@ namespace DialogflowFullfillmentTemplate.Controllers
                 GeoLocation location = new GeoLocation("Random", lat, lon,
                 0, zmanimTimeZone);
                 ComplexZmanimCalendar czc = new ComplexZmanimCalendar(location);
-                String Speech = "Here are your zmanim for " + city + ". Alos is at " + czc.GetAlosHashachar().formatDate() + ". Sunrise is at " + czc.GetSunrise().formatDate()
-                  + ". Sof Zeman Krias Shema is at " + czc.GetSofZmanShmaMGA().formatDate() + " According to the Magen Avraham, and at "
-                    + czc.GetSofZmanShmaGRA().formatDate() + " according to the Gra." + " Sof zeman Teffilah is at "
-                                                     + czc.GetSofZmanTfilaGRA().formatDate() + " According to the gra and at "
-                                                     + czc.GetSofZmanShmaMGA().formatDate() + " according to the Magen Avraham. "
-                                                     + "Chatzos is at " + czc.GetChatzos().formatDate() + ". Mincha Gedolah is at " + czc.GetMinchaGedola().formatDate()
-                                                     + ". Mincha Ketana is at " + czc.GetMinchaKetana().formatDate() + ". Shkia is at " + czc.GetSunset().formatDate()
-                                                     + ". Tzais Hakochavim is at " + czc.GetTzais().formatDate();
+                String Speech = "Here are your zmanim for " + city + ". Alose is at " + czc.GetAlosHashachar().formatDate() + ". Sunrise is at " + czc.GetSunrise().formatDate()
+                  + ". Sofe Zeman Krias Shema is at " + czc.GetSofZmanShmaMGA().formatDate() + " According to the aagein avraham, and at "
+                    + czc.GetSofZmanShmaGRA().formatDate() + " according to the grah." + " sofe zeman Teffilah is at "
+                                                     + czc.GetSofZmanTfilaGRA().formatDate() + " According to the grah and at "
+                                                     + czc.GetSofZmanShmaMGA().formatDate() + " according to the magein avraham. "
+                                                     + "chatzos is at " + czc.GetChatzos().formatDate() + ". mincha gedolah is at " + czc.GetMinchaGedola().formatDate()
+                                                     + ". mincha ketana is at " + czc.GetMinchaKetana().formatDate() + ". shkia is at " + czc.GetSunset().formatDate()
+                                                     + ". tzaiss Hakochavim is at " + czc.GetTzais().formatDate();
 
                 String display =
              "Zmanim for " + city + "\nAlos-" + czc.GetAlosHashachar().formatDate() + "\nSunrise-" + czc.GetSunrise().formatDate()
