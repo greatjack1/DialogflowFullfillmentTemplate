@@ -48,7 +48,7 @@ namespace DialogflowFullfillmentTemplate.Controllers
                 0, zmanimTimeZone);
                 ComplexZmanimCalendar czc = new ComplexZmanimCalendar(location);
                 String Speech = "Here are your zmanim for " + city + ". Alose is at " + czc.GetAlosHashachar().formatDate() + ". Sunrise is at " + czc.GetSunrise().formatDate()
-                  + ". Sofe Zeman Krias Shema is at " + czc.GetSofZmanShmaMGA().formatDate() + " According to the aagein avraham, and at "
+                  + ". Sofe Zeman Krias Shema is at " + czc.GetSofZmanShmaMGA().formatDate() + " According to the magein avraham, and at "
                     + czc.GetSofZmanShmaGRA().formatDate() + " according to the grah." + " sofe zeman Teffilah is at "
                                                      + czc.GetSofZmanTfilaGRA().formatDate() + " According to the grah and at "
                                                      + czc.GetSofZmanShmaMGA().formatDate() + " according to the magein avraham. "
