@@ -13,7 +13,6 @@ using Zmanim.TimeZone;
 using Zmanim.Utilities;
 
 
-
 namespace DialogflowFullfillmentTemplate.Controllers
 {
     /// <summary>
@@ -24,9 +23,13 @@ namespace DialogflowFullfillmentTemplate.Controllers
     {
         // POST api/testing
         [HttpPost]
-        public async Task<JsonResult> Post([FromBody]string value)
+        public JsonResult Post([FromBody]string value)
         {
-            return Json(value);
+            JsonResponse response = new JsonResponse();
+            response.Source = "";
+            response.Speech = "";
+                response.DisplayText = value;
+            return Json(response);
         }
     }
 }
