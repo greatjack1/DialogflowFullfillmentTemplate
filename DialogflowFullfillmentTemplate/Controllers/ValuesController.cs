@@ -24,9 +24,12 @@ namespace DialogflowFullfillmentTemplate.Controllers
            return Request.Headers["x-forwarded-for"].ToString();
         }
         // POST api/values
+        //this is the method called from the dialog flow fullfillment request
+        //the post contents is in the value string
         [HttpPost]
         public async Task<JsonResult> Post([FromBody]string value)
         {
+         
             //Create request
             try
             {
@@ -82,17 +85,6 @@ namespace DialogflowFullfillmentTemplate.Controllers
                 return Json(Errresponse);
             }
         }
-       
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+      
     }
 }

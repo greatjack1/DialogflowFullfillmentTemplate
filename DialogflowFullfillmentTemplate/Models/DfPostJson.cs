@@ -79,11 +79,10 @@ namespace DialogflowFullfillmentTemplate.Models
 
     public partial class Parameters
     {
-        [JsonProperty("city")]
-        public string City { get; set; }
+        [JsonProperty("zmanim_name")]
+        public string ZmanimName { get; set; }
 
-        [JsonProperty("name")]
-        public string Name { get; set; }
+
     }
 
     public partial class Metadata
