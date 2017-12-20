@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using DialogflowFullfillmentTemplate.ExtensionMethods;
-using DialogflowFullfillmentTemplate.ResponseModel;
+using DialogflowFullfillmentTemplate.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Zmanim;
 using Zmanim.TimeZone;
@@ -23,12 +23,12 @@ namespace DialogflowFullfillmentTemplate.Controllers
     {
         // POST api/testing
         [HttpPost]
-        public JsonResult Post([FromBody]string value)
-        {
-            JsonResponse response = new JsonResponse();
-            response.Source = "";
-            response.Speech = "";
-                response.DisplayText = value;
+        public JsonResult Post([FromBody]JsonRequest value)
+      {
+            ResponseJson response = new ResponseJson();
+            response.Speech = value.Result.Parameters.zmanim_names;
+            response.DisplayText = JsonConvert.SerializeObject(value);
+            response.Source = "random";
             return Json(response);
         }
     }

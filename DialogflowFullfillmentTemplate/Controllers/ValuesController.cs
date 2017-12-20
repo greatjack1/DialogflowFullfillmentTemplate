@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using DialogflowFullfillmentTemplate.Models;
-using DialogflowFullfillmentTemplate.ResponseModel;
 using System.Net;
 using System.IO;
 using Newtonsoft.Json;
@@ -13,6 +11,7 @@ using System.Text;
 using Zmanim.TimeZone;
 using Zmanim.Utilities;
 using Zmanim;
+using DialogflowFullfillmentTemplate.Models;
 using DialogflowFullfillmentTemplate.ExtensionMethods;
 namespace DialogflowFullfillmentTemplate.Controllers
 {
@@ -69,7 +68,7 @@ namespace DialogflowFullfillmentTemplate.Controllers
                                                      + "\nMincha Ketana-" + czc.GetMinchaKetana().formatDate() + "\nShkia-" + czc.GetSunset().formatDate()
                                                      + "\nTzais Hakochavim-" + czc.GetTzais().formatDate();
 
-                JsonResponse response = new JsonResponse();
+                ResponseJson response = new ResponseJson();
                 response.DisplayText = display;
                 response.Source = "Zmanim.net";
                 response.Speech = Speech;
@@ -78,7 +77,7 @@ namespace DialogflowFullfillmentTemplate.Controllers
             } catch(Exception ex){
                 //write the error message to console
                 Console.WriteLine(ex.ToString());
-                JsonResponse Errresponse = new JsonResponse();
+                ResponseJson Errresponse = new ResponseJson();
                 Errresponse.DisplayText = "There was a error getting jewish times for your location, please try again later";
                 Errresponse.Source = "Zmanimaog.herokuapp.com";
                 Errresponse.Speech = "There was a error getting jewish times for your location, please try again later";
