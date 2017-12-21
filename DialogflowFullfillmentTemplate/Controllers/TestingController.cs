@@ -55,24 +55,24 @@ namespace DialogflowFullfillmentTemplate.Controllers
                 //if zmanim_names is null then return the full zmanim, otherwise return that specific zman
                 if (value is null ||value.Result is null || value.Result.Parameters is null || value.Result.Parameters.ZmanimNames is null)
                 {
-                    String Speech = "Here are your zmanim for " + city + ". Alose is at " + czc.GetAlosHashachar().formatDate() + ". Sunrise is at " + czc.GetSunrise().formatDate()
-                      + ". Sofe Zeman Krias Shema is at " + czc.GetSofZmanShmaMGA().formatDate() + " According to the magein avraham, and at "
-                        + czc.GetSofZmanShmaGRA().formatDate() + " according to the grah." + " sofe zeman Teffilah is at "
+                    String Speech = "Here are your zmanim for " + city + ". Dawn is at " + czc.GetAlosHashachar().formatDate() + ". Sunrise is at " + czc.GetSunrise().formatDate()
+                      + ". The Latest Shema is at " + czc.GetSofZmanShmaMGA().formatDate() + " According to the magein avraham, and at "
+                        + czc.GetSofZmanShmaGRA().formatDate() + " according to the grah." + " The latest time for morning prayers is at "
                                                          + czc.GetSofZmanTfilaGRA().formatDate() + " According to the grah and at "
                                                          + czc.GetSofZmanShmaMGA().formatDate() + " according to the magein avraham. "
-                                                         + "chatzos is at " + czc.GetChatzos().formatDate() + ". mincha gedolah is at " + czc.GetMinchaGedola().formatDate()
-                                                         + ". mincha ketana is at " + czc.GetMinchaKetana().formatDate() + ". shkia is at " + czc.GetSunset().formatDate()
-                                                         + ". tzaiss Hakochavim is at " + czc.GetTzais().formatDate();
+                                                         + "Midday is at " + czc.GetChatzos().formatDate() + ". The earliest time for afternoon services is at " + czc.GetMinchaGedola().formatDate()
+                                                         + " Sunset is at" + czc.GetSunset().formatDate()
+                                                         + ". Nightfall is at " + czc.GetTzais().formatDate();
 
                     String display =
-                 "Zmanim for " + city + "\nAlos-" + czc.GetAlosHashachar().formatDate() + "\nSunrise-" + czc.GetSunrise().formatDate()
-                      + "\nSof Zeman Krias Shema MGA-" + czc.GetSofZmanShmaMGA().formatDate() + "\n Sof Zman Krias Shema Gra-"
-                        + czc.GetSofZmanShmaGRA().formatDate() + "\nSof zeman Teffilah Gra-"
-                                                         + czc.GetSofZmanTfilaGRA().formatDate() + "\n Sof Zman Tefilah Mga-"
+                 "Zmanim for " + city + "\nDawn-" + czc.GetAlosHashachar().formatDate() + "\nSunrise-" + czc.GetSunrise().formatDate()
+                      + "\n Latest Shema MGA-" + czc.GetSofZmanShmaMGA().formatDate() + "\n Latest Shema Gra-"
+                        + czc.GetSofZmanShmaGRA().formatDate() + "\nLatest morning prayers Gra-"
+                                                         + czc.GetSofZmanTfilaGRA().formatDate() + "\nLatest morning prayers Mga-"
                                                          + czc.GetSofZmanShmaMGA().formatDate()
-                                                         + "\nChatzos-" + czc.GetChatzos().formatDate() + "\nMincha Gedolah-" + czc.GetMinchaGedola().formatDate()
-                                                         + "\nMincha Ketana-" + czc.GetMinchaKetana().formatDate() + "\nShkia-" + czc.GetSunset().formatDate()
-                                                         + "\nTzais Hakochavim-" + czc.GetTzais().formatDate();
+                                                         + "\nMidday-" + czc.GetChatzos().formatDate() + "\nEarliest afternoon prayers-" + czc.GetMinchaGedola().formatDate()
+                                                         + "\nSunset-" + czc.GetSunset().formatDate()
+                                                         + "\nNightfall-" + czc.GetTzais().formatDate();
 
                     ResponseJson response = new ResponseJson();
                     response.DisplayText = display;
@@ -104,7 +104,7 @@ namespace DialogflowFullfillmentTemplate.Controllers
                             display = speech;
                             break;
                         case "minchagedolah":
-                            speech = "Earliest mincha is at " + czc.GetMinchaGedola().formatDate();
+                            speech = "The earliest time for afternoon prayer is at " + czc.GetMinchaGedola().formatDate();
                             display = speech;
                             break;
                         case "minchaketana":
@@ -130,9 +130,9 @@ namespace DialogflowFullfillmentTemplate.Controllers
 
                     }
                     ResponseJson response = new ResponseJson();
-                    response.DisplayText = display;
+                    response.DisplayText = display + " in " + city;
                     response.Source = "Zmanim.net";
-                    response.Speech = speech;
+                    response.Speech = speech + " in " + city;
                     Console.WriteLine("Processed post method");
                     return Json(response);
                 }
