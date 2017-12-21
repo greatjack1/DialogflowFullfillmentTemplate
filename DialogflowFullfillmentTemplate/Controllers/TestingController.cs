@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using DialogflowFullfillmentTemplate.ExtensionMethods;
+using DialogflowFullfillmentTemplate.GoogleModels;
 using DialogflowFullfillmentTemplate.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -24,7 +25,7 @@ namespace DialogflowFullfillmentTemplate.Controllers
     {
         // POST api/testing
         [HttpPost]
-        public async Task<JsonResult> Post([FromBody]JsonRequest value)
+        public async Task<JsonResult> Post([FromBody]GoogleJsonRequest value)
         {
 
             //Create request
@@ -52,7 +53,7 @@ namespace DialogflowFullfillmentTemplate.Controllers
                 0, zmanimTimeZone);
                 ComplexZmanimCalendar czc = new ComplexZmanimCalendar(location);
                 //if zmanim_names is null then return the full zmanim, otherwise return that specific zman
-                if (value is null ||value.Result is null || value.Result.Parameters is null || value.Result.Parameters.zmanim_names is null)
+                if (value is null ||value.Result is null || value.Result.Parameters is null || value.Result.Parameters.ZmanimNames is null)
                 {
                     String Speech = "Here are your zmanim for " + city + ". Alose is at " + czc.GetAlosHashachar().formatDate() + ". Sunrise is at " + czc.GetSunrise().formatDate()
                       + ". Sofe Zeman Krias Shema is at " + czc.GetSofZmanShmaMGA().formatDate() + " According to the magein avraham, and at "
@@ -84,7 +85,7 @@ namespace DialogflowFullfillmentTemplate.Controllers
                 {
                     String speech = "";
                     String display = "";
-                    switch (value.Result.Parameters.zmanim_names)
+                    switch (value.Result.Parameters.ZmanimNames)
                     {
                         case "shkia":
                             speech = "Sunset is at " + czc.GetSunset().formatDate();
