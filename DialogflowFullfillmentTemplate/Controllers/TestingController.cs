@@ -30,6 +30,8 @@ namespace DialogflowFullfillmentTemplate.Controllers
             //Create request
             try
             {
+                //log the inconming requests just to be able to view them on heroku
+                Console.WriteLine(JsonConvert.SerializeObject(value));
                 WebRequest request = WebRequest.Create("http://freegeoip.net/json/" + Request.Headers["x-forwarded-for"].ToString());
                 request.Method = "GET";
                 //Get the response
