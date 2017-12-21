@@ -30,9 +30,10 @@ namespace DialogflowFullfillmentTemplate.Controllers
             //Create request
             try
             {
-                StreamReader read = new StreamReader(HttpContext.Request.Body);
+                HttpContext.Request.Body.Position = 0;
+                StreamReader read = new StreamReader(HttpContext.Request.Body,true);
                 //log the inconming request body just to be able to view them on heroku
-                Console.WriteLine(read.ReadToEnd());
+                Console.WriteLine( await read.ReadToEndAsync());
                 WebRequest request = WebRequest.Create("http://freegeoip.net/json/" + Request.Headers["x-forwarded-for"].ToString());
                 request.Method = "GET";
                 //Get the response
