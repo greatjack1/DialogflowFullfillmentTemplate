@@ -61,7 +61,7 @@ namespace DialogflowFullfillmentTemplate.Controllers
                                                          + czc.GetSofZmanTfilaGRA().formatDate() + " According to the grah and at "
                                                          + czc.GetSofZmanShmaMGA().formatDate() + " according to the magein avraham. "
                                                          + "Midday is at " + czc.GetChatzos().formatDate() + ". The earliest time for afternoon services is at " + czc.GetMinchaGedola().formatDate()
-                                                         + " Sunset is at" + czc.GetSunset().formatDate()
+                                                         + ". Sunset is at" + czc.GetSunset().formatDate()
                                                          + ". Nightfall is at " + czc.GetTzais().formatDate();
 
                     String display =
@@ -92,11 +92,11 @@ namespace DialogflowFullfillmentTemplate.Controllers
                             display = speech;
                             break;
                         case "sofeshema":
-                            speech = "Latest shema is at " + czc.GetSofZmanShmaGRA().formatDate() + " according to the grah, and at " + czc.GetSofZmanShmaMGA().formatDate() + " according to the magein avraham.";
+                            speech = "Latest shema is at " + czc.GetSofZmanShmaGRA().formatDate() + " according to the grah, and at " + czc.GetSofZmanShmaMGA().formatDate() + " according to the magein avraham";
                             display = "Latest Shema Gra: " + czc.GetSofZmanShmaGRA().formatDate() + ". Latest Shema Magein Avraham: " + czc.GetSofZmanShmaMGA().formatDate();
                             break;
                         case "sofeteffilah":
-                            speech = "The latest time for morning prayers is at " + czc.GetSofZmanTfilaGRA().formatDate() + " according to the grah, and at " + czc.GetSofZmanTfilaMGA().formatDate() + " according to the magein avraham.";
+                            speech = "The latest time for morning prayers is at " + czc.GetSofZmanTfilaGRA().formatDate() + " according to the grah, and at " + czc.GetSofZmanTfilaMGA().formatDate() + " according to the magein avraham";
                             display = "Latest morning prayers Gra: " + czc.GetSofZmanTfilaGRA().formatDate() + ". Latest morning prayers Magein Avraham: " + czc.GetSofZmanTfilaMGA().formatDate();
                             break;
                         case "chatzos":
