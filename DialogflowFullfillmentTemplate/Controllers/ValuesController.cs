@@ -49,7 +49,7 @@ namespace DialogflowFullfillmentTemplate.Controllers
                 GeoLocation location = new GeoLocation("Random", lat, lon,
                 0, zmanimTimeZone);
                 ComplexZmanimCalendar czc = new ComplexZmanimCalendar(location);
-                String Speech = "Here are your zmanim for " + city + ". Alose is at " + czc.GetAlosHashachar().formatDate() + ". Sunrise is at " + czc.GetSunrise().formatDate()
+                String Speech = "Here are your jewish times for " + city + ". Alose is at " + czc.GetAlosHashachar().formatDate() + ". Sunrise is at " + czc.GetSunrise().formatDate()
                   + ". Sofe Zeman Krias Shema is at " + czc.GetSofZmanShmaMGA().formatDate() + " According to the magein avraham, and at "
                     + czc.GetSofZmanShmaGRA().formatDate() + " according to the grah." + " sofe zeman Teffilah is at "
                                                      + czc.GetSofZmanTfilaGRA().formatDate() + " According to the grah and at "
@@ -59,7 +59,7 @@ namespace DialogflowFullfillmentTemplate.Controllers
                                                      + ". tzaiss Hakochavim is at " + czc.GetTzais().formatDate();
 
                 String display =
-             "Zmanim for " + city + "\nAlos-" + czc.GetAlosHashachar().formatDate() + "\nSunrise-" + czc.GetSunrise().formatDate()
+             "Jewish times for " + city + "\nAlos-" + czc.GetAlosHashachar().formatDate() + "\nSunrise-" + czc.GetSunrise().formatDate()
                   + "\nSof Zeman Krias Shema MGA-" + czc.GetSofZmanShmaMGA().formatDate() + "\n Sof Zman Krias Shema Gra-"
                     + czc.GetSofZmanShmaGRA().formatDate() + "\nSof zeman Teffilah Gra-"
                                                      + czc.GetSofZmanTfilaGRA().formatDate() + "\n Sof Zman Tefilah Mga-"
@@ -72,7 +72,7 @@ namespace DialogflowFullfillmentTemplate.Controllers
                 response.DisplayText = display;
                 response.Source = "Zmanim.net";
                 response.Speech = Speech;
-                Console.WriteLine("Got a request from postman");
+                Console.WriteLine("Got a request");
                 return Json(response);
             } catch(Exception ex){
                 //write the error message to console

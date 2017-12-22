@@ -55,7 +55,7 @@ namespace DialogflowFullfillmentTemplate.Controllers
                 //if zmanim_names is null then return the full zmanim, otherwise return that specific zman
                 if (value is null ||value.Result is null || value.Result.Parameters is null || value.Result.Parameters.ZmanimNames is null)
                 {
-                    String Speech = "Here are your zmanim for " + city + ". Dawn is at " + czc.GetAlosHashachar().formatDate() + ". Sunrise is at " + czc.GetSunrise().formatDate()
+                    String Speech = "Here are your jewish times for " + city + ". Dawn is at " + czc.GetAlosHashachar().formatDate() + ". Sunrise is at " + czc.GetSunrise().formatDate()
                       + ". The Latest Shema is at " + czc.GetSofZmanShmaMGA().formatDate() + " According to the magein avraham, and at "
                         + czc.GetSofZmanShmaGRA().formatDate() + " according to the grah." + " The latest time for morning prayers is at "
                                                          + czc.GetSofZmanTfilaGRA().formatDate() + " According to the grah and at "
@@ -65,7 +65,7 @@ namespace DialogflowFullfillmentTemplate.Controllers
                                                          + ". Nightfall is at " + czc.GetTzais().formatDate();
 
                     String display =
-                 "Zmanim for " + city + "\nDawn-" + czc.GetAlosHashachar().formatDate() + "\nSunrise-" + czc.GetSunrise().formatDate()
+                 "Jewish times for " + city + "\nDawn-" + czc.GetAlosHashachar().formatDate() + "\nSunrise-" + czc.GetSunrise().formatDate()
                       + "\n Latest Shema MGA-" + czc.GetSofZmanShmaMGA().formatDate() + "\n Latest Shema Gra-"
                         + czc.GetSofZmanShmaGRA().formatDate() + "\nLatest morning prayers Gra-"
                                                          + czc.GetSofZmanTfilaGRA().formatDate() + "\nLatest morning prayers Mga-"
