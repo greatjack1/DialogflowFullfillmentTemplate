@@ -2,10 +2,10 @@
 using Newtonsoft.Json;
 using J = Newtonsoft.Json.JsonPropertyAttribute;
 
-namespace DialogflowFullfillmentTemplate.GoogleModels
+namespace DialogflowFullfillmentTemplate.Models
 {
     
-        public partial class GoogleJsonRequest
+        public partial class JsonRequest
         {
             [J("originalRequest")] public OriginalRequest OriginalRequest { get; set; }
             [J("id")] public string Id { get; set; }

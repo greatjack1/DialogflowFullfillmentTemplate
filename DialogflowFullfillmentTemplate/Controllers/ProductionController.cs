@@ -1,21 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
-using DialogflowFullfillmentTemplate.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
+using System.IO;
+using Newtonsoft.Json.Linq;
+using DialogflowFullfillmentTemplate.Models;
 
 namespace DialogflowFullfillmentTemplate.Controllers
 {
-    /// <summary>
-    /// Testing controller. This controller is used to test new methods while not interfereing with the production controller
-    /// </summary>
     [Route("dialogflow/[controller]")]
-    public class TestingController : Controller
+    public class ProductionController : Controller
     {
-        // POST dialogflow/testing
+        // POST dialogflow/production
         /// <summary>
         /// This method receives the post request from dialog flow and binds the json to the value object.
         /// You then use the JsonResponse class to build a reponse to return for dialog flow.
@@ -31,7 +27,6 @@ namespace DialogflowFullfillmentTemplate.Controllers
             response.Source = "sample fullfillment api";
             return Json(response);
         }
-
+      
     }
 }
-

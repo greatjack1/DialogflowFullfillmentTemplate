@@ -6,13 +6,11 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
-    <Folder Include="ExtensionMethods\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-    <PackageReference Include="Zmanim" Version="1.4.1" />
   </ItemGroup>
 
   <ItemGroup>
