@@ -18,7 +18,7 @@ namespace DialogflowFullfillmentTemplate.Models2
     public partial class QueryResult
     {
         [J("queryText")] public string QueryText { get; set; }
-        [J("parameters")] public YeslyParameters Parameters { get; set; }
+        [J("parameters")] public JObject Parameters { get; set; }
         [J("allRequiredParamsPresent")] public bool AllRequiredParamsPresent { get; set; }
         [J("fulfillmentText")] public string FulfillmentText { get; set; }
         [J("fulfillmentMessages")] public JObject[] FulfillmentMessages { get; set; }
@@ -40,11 +40,5 @@ namespace DialogflowFullfillmentTemplate.Models2
         [J("name")] public string Name { get; set; }
         [J("lifespanCount")] public int LifespanCount { get; set; }
         [J("parameters")] public JObject Parameters { get; set; }
-    }
-
-    public partial class YeslyParameters
-    {
-        [J("room")] public string Room { get; set; }
-        [J("device")] public string Device { get; set; }
     }
 }
