@@ -10,16 +10,14 @@
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
-      "launchBrowser": true,
-      "launchUrl": "api/values",
+      "launchBrowser": false,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "DialogflowFullfillmentTemplate": {
       "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "api/values",
+      "launchBrowser": false,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
