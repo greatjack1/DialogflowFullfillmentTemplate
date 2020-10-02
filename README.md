@@ -23,6 +23,8 @@ I highly recommend hosting your fulfillment service on heroku. Just use the .net
 
 The template was solely designed and implemented by Yaakov from the WYRE corp
 
+To contribute, feel free to open a pr.
+
 ## Contact
 
 To contact the developer with question, comments or anything else, just send a email to steeltoejava at gmail.com (The @ symbol is ommited to prevent spam scrapers)
